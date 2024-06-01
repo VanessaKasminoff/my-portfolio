@@ -1,6 +1,13 @@
 import './assets/css/App.css'
+import data from './assets/data/projects.json'
+import ProjectCard from './components/ProjectCard'
 
 function App() {
+
+  // const projectNames = data.map(project => project.name)
+  // const projectImg = data.map(project => project.image)
+  // const projectDesc = data.map(project => project.description)
+
   return (
     <main>
       <header>
@@ -24,6 +31,20 @@ function App() {
       <div className='bottom-text'>
         <p>Software developer, gamer, and matcha lover</p>
       </div>
+
+      <div className='wrapper'>
+        <h2 className='projects-title'>Check out my projects</h2>
+        <div className='container scrollx'>
+          {data.map((project, index) => (
+            <ProjectCard 
+              key={index} 
+              name={project.name} 
+              image={project.image} 
+              description={project.description} />
+          ))}
+        </div>
+      </div>
+
     </main>
   )
 }
