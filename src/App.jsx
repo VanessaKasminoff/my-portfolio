@@ -1,12 +1,34 @@
-import './assets/css/App.css'
-import data from './assets/data/projects.json'
-import ProjectCard from './components/ProjectCard'
+import './assets/css/App.css';
+import data from './assets/data/projects.json';
+import ProjectCard from './components/ProjectCard';
+import { useRef } from 'react';
+
+// GSAP
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
 
 function App() {
+  gsap.registerPlugin(useGSAP, ScrollTrigger)
 
-  // const projectNames = data.map(project => project.name)
-  // const projectImg = data.map(project => project.image)
-  // const projectDesc = data.map(project => project.description)
+  const containerRef = useRef(null)
+
+  useGSAP(() => {
+    const sections = gsap.utils.toArray('.container section')
+    const container = containerRef.current
+
+    gsap.to(sections, {
+      xPercent: -100 * (sections.length - 1),
+      ease: 'none',
+      scrollTrigger: {
+        trigger: container,
+        pin: true,
+        scrub: 1,
+        end: () => `+=${container.offsetWidth}`
+      }
+    })
+  })
 
   return (
     <main>
@@ -29,12 +51,12 @@ function App() {
       </div>
 
       <div className='bottom-text'>
-        <p>Software developer, gamer, and matcha lover</p>
+        <p>Software developer, gamer, and tea lover</p>
       </div>
 
       <div className='wrapper'>
-        <h2 className='projects-title'>Check out my projects</h2>
-        <div className='container scrollx'>
+      <h2 className='projects-title'>Check out my projects</h2>
+        <div className='container scrollx' ref={containerRef}>
           {data.map((project, index) => (
             <ProjectCard 
               key={index} 
@@ -43,6 +65,10 @@ function App() {
               description={project.description} />
           ))}
         </div>
+      </div>
+
+      <div className='content'>
+        <h2>This is more content after the scroll.</h2>
       </div>
 
     </main>
