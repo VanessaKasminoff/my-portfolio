@@ -1,0 +1,17 @@
+{
+    "projects": [
+        {
+            "name": "Project 1",
+            "image": "https://picsum.photos/400",
+            "description": "Description of the project goes here."
+        },{
+            "name": "Project 2",
+            "image": "https://picsum.photos/400",
+            "description": "Description of the project goes here."
+        },{
+            "name": "Project 3",
+            "image": "https://picsum.photos/400",
+            "description": "Description of the project goes here."
+        }
+    ]
+}

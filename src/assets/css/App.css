@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: black;
+  color: white;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  font-size: 2rem;
+  z-index: 999;
+  background-color: black;
+}
+
+header h2 {
+    text-transform: uppercase;
+    font-weight: 200;
+}
+
+nav ul li {
+  list-style: none;
+  display: inline-block;
+  margin: 0 25px;
+  font-weight: 200;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+nav ul li a:before {
+    content: '';
+    width: 0;
+    height: 1px;
+    display: block;
+    background-color: white;
+    transition: all ease 0.8s;
+}
+
+nav ul li a:hover:before {
+    width: 100%;    
+}
+
+.theme-toggle {
+    width: 35px;
+}
+
+.theme-toggle:hover {
+    cursor: pointer;
+}
+
+.main-content {
+    position: relative;
+    height: 100vh;
+    padding: 0 200px;
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+    /* background-color: violet; */
+}
+
+.bottom-text {
+    position: absolute;
+    bottom: 80px;
+    left: 0;
+    text-align: center;
+    width: 100%;
+}
+
+.bottom-text p {
+    text-transform: uppercase;
+    font-size: 1.5rem;
+}
