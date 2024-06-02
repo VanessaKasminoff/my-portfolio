@@ -115,3 +115,34 @@ nav ul li a:hover:before {
     margin: 70px;
     font-size: 2rem;
 }
+
+
+@media screen and (min-width: 830px) and (max-width: 1500px) {
+    header {
+        font-size: 1rem;
+        /* border: 1px solid red; */
+    }
+
+    .theme-toggle {
+        width: 25px;
+    }
+
+    .main-content {
+        font-size: 1.7rem;
+    }
+
+    .bottom-text p {
+        font-size: 1rem;
+    }
+
+    .wrapper .projects-title {
+        text-align: center;
+        position: relative;
+        top: 80px;
+        font-size: 3rem;
+    }
+
+    .container section {
+        margin-top: 50px;
+    }
+}

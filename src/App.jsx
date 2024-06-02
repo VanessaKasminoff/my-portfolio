@@ -1,7 +1,7 @@
 import './assets/css/App.css';
 import data from './assets/data/projects.json';
 import ProjectCard from './components/ProjectCard';
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 
 // GSAP
 import gsap from 'gsap';
@@ -13,6 +13,7 @@ function App() {
   gsap.registerPlugin(useGSAP, ScrollTrigger)
 
   const containerRef = useRef(null)
+  // const sunRef = useRef()
 
   useGSAP(() => {
     const sections = gsap.utils.toArray('.container section')
@@ -27,8 +28,27 @@ function App() {
         scrub: 1,
         end: () => `+=${container.offsetWidth}`
       }
-    })
+    });
   })
+
+  // useEffect(() => {
+  //   const sun = sunRef.current
+
+  //   let sunSpin = gsap.to(sun, {
+  //     rotation: '+=360',
+  //     ease: 'none',
+  //     duration: 3,
+  //     repeat: -1,
+  //   });
+
+  //   sun.addEventListener('mouseenter', () => sunSpin.play());
+  //   sun.addEventListener('mouseleave', () => sunSpin.kill());
+
+  //   return () => {
+  //     sun.removeEventListener('mouseenter', () => sunSpin.play());
+  //     sun.removeEventListener('mouseleave', () => sunSpin.kill());
+  //   };
+  // }, [])
 
   return (
     <main>
@@ -36,7 +56,13 @@ function App() {
         <div className='name-header'>
           <h2>Vanessa Kasminoff</h2>
         </div>
-        <img className='theme-toggle' src='/images/sun.svg' alt='sun icon'/>
+        <img className='theme-toggle' 
+        src='/images/sun.svg' 
+        alt='sun icon' 
+        // ref={sunRef} 
+        // onMouseEnter={() => sunSpin.play()}
+        // onMouseLeave={() => sunSpin.kill()}
+        />
         <nav>
           <ul>
             <li><a href='#'>Projects</a></li>
