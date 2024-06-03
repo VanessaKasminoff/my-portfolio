@@ -13,7 +13,8 @@ function App() {
   gsap.registerPlugin(useGSAP, ScrollTrigger)
 
   const containerRef = useRef(null)
-  // const sunRef = useRef()
+  const sunRef = useRef(null)
+  const spinAnimationRef = useRef(null)
 
   useGSAP(() => {
     const sections = gsap.utils.toArray('.container section')
@@ -29,26 +30,36 @@ function App() {
         end: () => `+=${container.offsetWidth}`
       }
     });
-  })
+  });
 
-  // useEffect(() => {
-  //   const sun = sunRef.current
+  useEffect(() => {
+    const sun = sunRef.current
 
-  //   let sunSpin = gsap.to(sun, {
-  //     rotation: '+=360',
-  //     ease: 'none',
-  //     duration: 3,
-  //     repeat: -1,
-  //   });
+    const handleMouseEnter = () => {
+      spinAnimationRef.current = gsap.to(sun, {
+        rotation: '+=360',
+        ease: 'none',
+        duration: 3,
+        repeat: -1
+      });
+    };
 
-  //   sun.addEventListener('mouseenter', () => sunSpin.play());
-  //   sun.addEventListener('mouseleave', () => sunSpin.kill());
+    const handleMouseLeave = () => {
+      if (spinAnimationRef.current) {
+        spinAnimationRef.current.kill()
+      }
+    };
 
-  //   return () => {
-  //     sun.removeEventListener('mouseenter', () => sunSpin.play());
-  //     sun.removeEventListener('mouseleave', () => sunSpin.kill());
-  //   };
-  // }, [])
+    sun.addEventListener('mouseenter', handleMouseEnter);
+    sun.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      sun.removeEventListener('mouseenter', handleMouseEnter);
+      sun.removeEventListener('mouseleave', handleMouseLeave)
+    };
+
+  }, [])
+
 
   return (
     <main>
@@ -56,12 +67,10 @@ function App() {
         <div className='name-header'>
           <h2>Vanessa Kasminoff</h2>
         </div>
-        <img className='theme-toggle' 
+        <img className='theme-toggle sun' 
         src='/images/sun.svg' 
         alt='sun icon' 
-        // ref={sunRef} 
-        // onMouseEnter={() => sunSpin.play()}
-        // onMouseLeave={() => sunSpin.kill()}
+        ref={sunRef}
         />
         <nav>
           <ul>
