@@ -1,6 +1,7 @@
 import './assets/css/App.css';
 import data from './assets/data/projects.json';
 import ProjectCard from './components/ProjectCard';
+import LogoCard from './components/LogoCard';
 import { useRef, useEffect } from 'react';
 
 // GSAP
@@ -82,11 +83,22 @@ function App() {
       </header>
 
       <div className='main-content'>
+
         <h1>Hi! Thanks for stopping by.</h1>
+      
+        <div className='logo-group'>
+          <div className='logo-card-container'>
+            <LogoCard logoImg='/images/HTML5.png'/>
+            <LogoCard logoImg='/images/CSS3.png'/>
+            <LogoCard logoImg='/images/JavaScript.png'/>
+            <LogoCard logoImg='/images/React.png'/>
+          </div>
+        </div>
+
       </div>
 
       <div className='bottom-text'>
-        <p>Software developer, gamer, and tea lover</p>
+        <p>Software developer, gamer, and tea enthusiast</p>
       </div>
 
       <div className='wrapper'>
