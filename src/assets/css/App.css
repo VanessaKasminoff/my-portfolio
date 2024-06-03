@@ -111,6 +111,14 @@ nav ul li a:hover:before {
     align-items: center;
 }
 
+.project-section h2 {
+    font-size: 2.5rem;
+}
+
+.project-section p {
+    font-size: 1.5rem;
+}
+
 .content {
     margin: 70px;
     font-size: 2rem;
